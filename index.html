@@ -49,6 +49,7 @@ function randomHole(holes) {
 	const idx = Math.floor(Math.random() * holes.length);
 	const hole = holes[idx];
 	if (hole === lastHole) {
+		//if the same hole appears twice one after another, we want to avoid that
 		return randomHole(holes);
 	}
 	lastHole = hole;
@@ -62,7 +63,7 @@ function peep() {
 	setTimeout(() => {
 		if (!timeUp) peep();
 		hole.classList.remove("up");
-	}, time);
+	}, time); //after the time is up we want the moles to disappear and remove the class
 }
 
 function bunk(e) {
